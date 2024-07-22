@@ -1,0 +1,31 @@
+﻿@model AppApi.Model.BackGround
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>BackGround</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Image
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.BackGround_Image != null)
+            {
+                <img src="data:image/png;base64,@Model.BackGround_Image" alt="Image" style="max-width:200px; max-height:200px;" />
+            }
+            else
+            {
+                <span>No Image</span>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id_BackGroud">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

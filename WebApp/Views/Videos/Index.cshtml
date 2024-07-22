@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AppApi.Model.Video>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Stt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video_Links)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Categories)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Video_Links)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Categories)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id_Video">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id_Video">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id_Video">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

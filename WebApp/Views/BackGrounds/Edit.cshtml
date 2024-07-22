@@ -1,0 +1,40 @@
+﻿@model AppApi.Model.BackGround
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>BackGround</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id_BackGroud" />
+            <div class="form-group">
+                <label asp-for="BackGround_Image" class="control-label">Current Image</label>
+                @if (Model.BackGround_Image != null)
+                {
+                    <img src="data:image/png;base64,@Model.BackGround_Image" alt="Current Image" style="max-width:200px; max-height:200px;" />
+                }
+                else
+                {
+                    <span>No Image</span>
+                }
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
