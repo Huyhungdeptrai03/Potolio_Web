@@ -67,10 +67,10 @@ namespace WebApp.Controllers
             return View();
         }
 
-        // POST: Videos/Create
+        //create
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> Create([Bind("Id,Title,Url,Description")] Video video)
         {
             if (ModelState.IsValid)
@@ -88,6 +88,9 @@ namespace WebApp.Controllers
             }
             return View(video);
         }
+
+
+
 
         // GET: Videos/Edit/5
         public async Task<IActionResult> Edit(int? id)

@@ -18,6 +18,18 @@ builder.Services.AddTransient<IUserRepo, UserRepo>();
 builder.Services.AddTransient<IAboutsRepos, AboutRepo>();
 builder.Services.AddTransient<IBackGroundsRepo, BackGroundRepo>();
 
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,6 +40,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+app.UseEndpoints(endpoints => {
+    endpoints.MapControllers();
+});
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 

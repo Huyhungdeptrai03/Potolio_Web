@@ -10,7 +10,7 @@ namespace AppApi.Model
         public string Name { get; set; }
 
         //mối quan hệ 1-n với video
-        public List<Video> Videos { get; set; }
+        public ICollection<Video> Videos { get; set; } = new List<Video>();
 
         
 
